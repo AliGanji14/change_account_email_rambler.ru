@@ -1,5 +1,9 @@
+from dotenv import load_dotenv
+import os
 from playwright.sync_api import sync_playwright
 import re
+
+load_dotenv()
 
 
 def change_password(email, old_password, new_password):
@@ -25,8 +29,7 @@ def change_password(email, old_password, new_password):
         page.pause()
 
 
-email = 'fcguzxkoel@rambler.ru'
-old_password = '41196785PFTMv'
-new_password = 'abcd12345678'
-
+email = os.getenv('EMAIL')
+old_password = os.getenv('OLD_PASSWORD')
+new_password = os.getenv('NEW_PASSWORD')
 change_password(email, old_password, new_password)
